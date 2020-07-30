@@ -1,19 +1,8 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Wed Jul 29 15:55:24 2020
-
-@author: appedu
-"""
-
-from mcpi.minecraft import Minecraft
-mc = Minecraft.create()
-import time
-x,y,z = mc.player.getTilePos()
-def Tree (x,y,z):
-    mc.setBlocks(x-1,y+3,z-1,x+1,y+5,z+1,46)
-    mc.setBlocks(x,y,z,x,y+4,z,17)
-for i in range (10):
-    for j in range (10):
-        for k in range (10):
-            Tree(x+i*10,y+j*i,z+k*i)
-            time.sleep(0)
+A=[1,89,56,9,42,37,6]
+for i in range(len(A)):
+    for j in range(len(A)-i-1):
+        if A[j] > A[j+1]:
+            T = A[j]
+            A[j] = A[j+1]
+            A[j+1] = T
+print(A)

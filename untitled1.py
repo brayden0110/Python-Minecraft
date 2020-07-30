@@ -1,19 +1,31 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Wed Jul 29 14:45:18 2020
-
-@author: appedu
-"""
 
 from mcpi.minecraft import Minecraft
+import random
 mc = Minecraft.create()
-x,y,z = mc.player.getTilePos()
-def Tree (x,y,z):
-    mc.setBlocks(x-1,y+3,z-1,x+1,y+5,z+1,161)
-    mc.setBlocks(x,y,z,x,y+4,z,17)
-for i in range (10):
-    Tree(x+i*5,y,z+0)
-    Tree(x+i*5,y,z+1)
-    Tree(x+i*5,y,z+2)
-    Tree(x+i*5,y,z+3)
-    Tree(x+i*5,y,z+4)
+x,y,z = mc.player.getPos()
+for i in range(10):
+    r = random.randrange(1,7)
+    #Z+
+    if r==1:
+        mc.setBlocks(x,y,z,x,y,z+4,1)
+        z = z+4 
+    #Z-
+    elif r==2:
+        mc.setBlocks(x,y,z,x,y,z-4,1)
+        z = z-4
+    #X-
+    elif r==3:
+        mc.setBlocks(x,y,z,x+4,y,z,1)
+        x = x-4
+    #X+
+    elif r==4:
+        mc.setBlocks(x,y,z,x+4,y,z,1)
+        x = x+4
+    #Y+
+    elif r==5:
+        mc.setBlocks(x,y+4,z,x,y,z,1)
+        y = y+4
+    #Y-
+    else:
+        mc.setBlocks(x,y-4,z,x,y,z,1)
+        y = y-4
